@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathlight — Track your placement prep</title>
+  <meta name="description" content="Pathlight helps CS students plan, log, and stay consistent with DSA and full-stack interview prep.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ============ HEADER / NAV ============ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-text">pathlight</span>
+      </a>
+
+      <!-- Nav links: hidden on mobile behind the toggle button -->
+      <nav class="nav" id="primary-nav">
+        <ul class="nav-list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#tracks">Tracks</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+        <a href="#signup" class="btn btn-primary nav-cta">Start tracking</a>
+      </nav>
+
+      <!-- Hamburger / close button toggled with JS for small screens -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-bar">jnkj</span>
+        <span class="nav-toggle-bar">vbrgbtfgngdhnh</span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="hero-kicker">for final-year CS students</p>
+          <h1>Placement prep, <br>without the spreadsheet.</h1>
+          <p class="hero-sub">Pathlight keeps your DSA reps, projects, and mock interviews in one streak-based log — so you always know what to solve next and how far you've come.</p>
+          <div class="hero-actions">
+            <a href="#signup" class="btn btn-primary">Start tracking — free</a>
+            <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+          </div>
+          <p class="hero-note">No card required · works on any device</p>
+        </div>
+
+        <!-- Decorative code-editor style panel -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="code-window">
+            <div class="code-window-bar">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-amber"></span>
+              <span class="dot dot-green"></span>
+              <span class="code-window-title">progress.log</span>
+            </div>
+            <pre class="code-window-body"><code>day 47  →  arrays & two pointers      done
+day 48  →  sliding window              done
+day 49  →  binary trees                <span class="tok-active">in progress</span>
+streak  →  <span class="tok-num">12</span> days
+target  →  DSA + system design by May
+</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE HIGHLIGHTS ============ -->
+    <section class="features" id="features">
+      <div class="container">
+        <h2 class="section-title">Everything your prep already needs, in one place</h2>
+        <p class="section-sub">Built around the three things that actually move the needle before placement season.</p>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3 class="feature-title"><span class="feature-tag">topics/</span>dsa-tracker</h3>
+            <p>Log every problem by pattern — arrays, graphs, DP — and see which topics still need reps before your next mock interview.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3 class="feature-title"><span class="feature-tag">topics/</span>project-log</h3>
+            <p>Keep your full-stack builds, stack choices, and deploy links in one running list you can turn into resume bullets later.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3 class="feature-title"><span class="feature-tag">topics/</span>streaks</h3>
+            <p>A simple daily streak, not a leaderboard — the goal is showing up consistently, not competing with strangers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container how-inner">
+        <div class="how-copy">
+          <h2 class="section-title">Three steps, every day</h2>
+          <ol class="how-steps">
+            <li>
+              <h3>Pick today's focus</h3>
+              <p>Choose a DSA topic or a project task from your plan — Pathlight remembers where you left off.</p>
+            </li>
+            <li>
+              <h3>Log what you finish</h3>
+              <p>One line per problem or task. No forms, no dashboards to configure first.</p>
+            </li>
+            <li>
+              <h3>Review your week</h3>
+              <p>A quiet weekly summary shows which patterns are solid and which need another pass.</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="tracks-panel" id="tracks">
+          <h3 class="tracks-heading">Prep tracks</h3>
+          <ul class="tracks-list">
+            <li><span class="tracks-name">DSA fundamentals</span><span class="tracks-meta">120 problems</span></li>
+            <li><span class="tracks-name">Full-stack build</span><span class="tracks-meta">4 projects</span></li>
+            <li><span class="tracks-name">System design basics</span><span class="tracks-meta">10 case studies</span></li>
+            <li><span class="tracks-name">Mock interviews</span><span class="tracks-meta">weekly</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNUP / CTA ============ -->
+    <section class="cta-band" id="signup">
+      <div class="container cta-inner">
+        <h2>Start your first streak today</h2>
+        <p>Set up your first prep track in under two minutes.</p>
+        <form class="signup-form" id="signup-form">
+          <label for="email" class="visually-hidden">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@college.edu" required>
+          <button type="submit" class="btn btn-primary">Get started</button>
+        </form>
+        <p class="form-status" id="form-status" role="status"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-text">pathlight</span>
+        <p class="footer-tagline">Built by students, for the placement grind.</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#tracks">Tracks</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; 2026 Pathlight. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

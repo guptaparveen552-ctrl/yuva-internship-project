@@ -494,3 +494,25 @@ input:focus-visible {
   .footer-links { grid-template-columns: 1fr 1fr; }
   .signup-form { flex-direction: column; }
 }
+
+/* ==========================================================================
+   PRODUCT PREVIEW / SHOWCASE
+   ========================================================================== */
+.showcase { padding: var(--space-5) 0; border-top: 1px solid var(--color-panel-border); }
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.showcase-grid img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-panel-border);
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .showcase-grid { grid-template-columns: 1fr; }
+}

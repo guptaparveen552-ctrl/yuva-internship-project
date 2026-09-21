@@ -1,0 +1,21 @@
+# Sample caching strategy for a static host that reads a _headers file
+# (Netlify, Cloudflare Pages). For Apache, the equivalent .htaccess rules
+# are noted in REPORT.md — the ideas are the same either way.
+#
+# Hashed filenames (styles.min.<hash>.css, script.min.<hash>.js) are safe to
+# cache forever: if the content changes, the build step gives the file a new
+# hash and a new URL, so browsers never serve stale CSS or JS. index.html is
+# the one file that must always be revalidated, since it is what points at
+# the current hashed filenames.
+
+/index.html
+  Cache-Control: no-cache
+
+/styles.min.*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/script.min.*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable

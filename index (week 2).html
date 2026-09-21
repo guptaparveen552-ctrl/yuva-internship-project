@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pathlight Modal — interactive component demo</title>
+  <meta name="description" content="A reusable, accessible modal dialog component built with vanilla JavaScript, HTML and CSS.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Page styles, then the component stylesheet -->
+  <link rel="stylesheet" href="demo.css">
+  <link rel="stylesheet" href="modal.css">
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="container">
+      <a href="#" class="logo">
+        <span class="logo-mark">&gt;_</span>
+        <span class="logo-text">pathlight</span>
+      </a>
+      <p class="page-kicker">Week 2 · interactive UI component</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <h1>A modal dialog you can reuse anywhere</h1>
+      <p>
+        Three modals on this page share one component file. Each is defined by markup
+        alone — no extra JavaScript per modal. Open them with a mouse, or tab to a
+        button and press Enter, then try Tab, Shift&nbsp;+&nbsp;Tab and Escape inside
+        the dialog.
+      </p>
+    </section>
+
+    <!-- ============ DEMO TRIGGERS ============ -->
+    <section class="demo-grid">
+
+      <article class="demo-card">
+        <h2>Content modal</h2>
+        <p>The plain case: a title, some body copy, one close action. Click the dimmed
+           backdrop to dismiss it.</p>
+        <button class="btn btn-primary" data-modal-open="about-modal">What is Pathlight?</button>
+      </article>
+
+      <article class="demo-card">
+        <h2>Form modal</h2>
+        <p>Holds focusable fields, validates before closing, and reports its own errors
+           instead of relying on the browser.</p>
+        <button class="btn btn-primary" data-modal-open="track-modal">Add a prep track</button>
+      </article>
+
+      <article class="demo-card">
+        <h2>Confirm modal</h2>
+        <p>A destructive action. Backdrop clicks are ignored here, so the choice has to
+           be deliberate.</p>
+        <button class="btn btn-danger" data-modal-open="delete-modal">Delete my log</button>
+      </article>
+
+    </section>
+
+    <p class="demo-status" id="page-status" role="status"></p>
+
+    <!-- A live list so the modals visibly change something on the page -->
+    <section class="tracks">
+      <h2>Your prep tracks</h2>
+      <ul class="tracks-list" id="tracks-list">
+        <li><span>DSA fundamentals</span><span class="tracks-meta">120 problems</span></li>
+        <li><span>Full-stack build</span><span class="tracks-meta">4 projects</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1 — content
+       Markup pattern: .modal[id] > .modal-dialog > header / body / footer
+       ========================================================================== -->
+  <div class="modal" id="about-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title">What is Pathlight?</h2>
+        <button class="modal-close" data-modal-close aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          Pathlight is a streak-based log for placement prep. You record one line per
+          problem solved, project task finished, or mock interview taken, and the weekly
+          view shows which patterns still need reps.
+        </p>
+        <p>
+          It is deliberately small: no leaderboards, no dashboard to configure before you
+          can log your first entry.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2 — form
+       data-modal-autofocus moves focus straight to the first input on open.
+       ========================================================================== -->
+  <div class="modal" id="track-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title">Add a prep track</h2>
+        <button class="modal-close" data-modal-close aria-label="Close dialog">&times;</button>
+      </div>
+      <form id="track-form" novalidate>
+        <div class="modal-body">
+          <p class="modal-desc">Tracks group related work so your weekly summary stays readable.</p>
+
+          <div class="modal-field" id="track-name-field">
+            <label for="track-name">Track name</label>
+            <input type="text" id="track-name" name="track-name"
+                   placeholder="Graphs and trees"
+                   data-modal-autofocus
+                   aria-describedby="track-name-error">
+            <p class="modal-error" id="track-name-error" role="alert"></p>
+          </div>
+
+          <div class="modal-field">
+            <label for="track-goal">Target</label>
+            <select id="track-goal" name="track-goal">
+              <option value="30 problems">30 problems</option>
+              <option value="60 problems">60 problems</option>
+              <option value="2 projects">2 projects</option>
+              <option value="weekly">Weekly session</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+          <button type="submit" class="btn btn-primary">Add track</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3 — confirm
+       data-modal-static keeps backdrop clicks from dismissing it.
+       ========================================================================== -->
+  <div class="modal" id="delete-modal" data-modal-static>
+    <div class="modal-dialog is-sm">
+      <div class="modal-header">
+        <h2 class="modal-title">Delete your log?</h2>
+        <button class="modal-close" data-modal-close aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">
+          This removes every logged problem, project entry and streak. It cannot be undone.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" data-modal-close data-modal-autofocus>Keep my log</button>
+        <button class="btn btn-danger" id="confirm-delete">Delete everything</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">
+    <div class="container">
+      <p>Pathlight modal component · vanilla HTML, CSS and JavaScript</p>
+    </div>
+  </footer>
+
+  <!-- Component first, then the page code that uses it -->
+  <script src="modal.js"></script>
+  <script src="demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+/* ==========================================================================
+   Pathlight Modal — component styles
+   --------------------------------------------------------------------------
+   Everything is scoped under .modal so this file can be dropped into any
+   page without colliding with the host site's styles. Colours come from
+   custom properties with fallbacks, so the component still looks right if
+   the host page does not define the Pathlight tokens.
+   ========================================================================== */
+
+.modal {
+  --modal-bg: var(--color-panel, #161c2c);
+  --modal-border: var(--color-panel-border, #2a3145);
+  --modal-text: var(--color-text, #e8eaed);
+  --modal-muted: var(--color-text-muted, #8b93a7);
+  --modal-accent: var(--color-accent, #5eead4);
+  --modal-danger: #e5534b;
+
+  position: fixed;
+  inset: 0;
+  /* inset has good support, but older browsers need the long form. */
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+
+  background: rgba(7, 10, 17, 0.72);
+
+  /* Hidden state: still in the layout tree, but invisible and inert. */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+}
+
+/* Blur is a progressive enhancement — plain dim works fine without it. */
+@supports (backdrop-filter: blur(4px)) {
+  .modal { backdrop-filter: blur(4px); }
+}
+
+.modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Dialog panel
+   -------------------------------------------------------------------------- */
+.modal-dialog {
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100vh - 2.5rem);
+  overflow-y: auto;
+
+  background: var(--modal-bg);
+  border: 1px solid var(--modal-border);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px -20px rgba(0, 0, 0, 0.7);
+
+  transform: translateY(-10px) scale(0.98);
+  transition: transform 0.18s ease;
+}
+
+.modal.is-open .modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.modal-dialog:focus { outline: none; }
+
+/* Size modifiers — the same component at different widths. */
+.modal-dialog.is-sm { max-width: 400px; }
+.modal-dialog.is-lg { max-width: 720px; }
+
+/* --------------------------------------------------------------------------
+   Dialog sections
+   -------------------------------------------------------------------------- */
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid var(--modal-border);
+}
+
+.modal-title {
+  margin: 0;
+  font-family: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--modal-text);
+}
+
+.modal-close {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--modal-border);
+  border-radius: 6px;
+  color: var(--modal-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.modal-close:hover {
+  color: var(--modal-text);
+  border-color: var(--modal-accent);
+}
+
+.modal-body {
+  padding: 1.25rem;
+  color: var(--modal-muted);
+  font-size: 0.95rem;
+}
+
+.modal-body > :first-child { margin-top: 0; }
+.modal-body > :last-child { margin-bottom: 0; }
+
+.modal-desc { margin: 0 0 1rem; }
+
+.modal-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--modal-border);
+}
+
+/* --------------------------------------------------------------------------
+   Form pieces used inside the demo modals
+   -------------------------------------------------------------------------- */
+.modal-field { margin-bottom: 1rem; }
+
+.modal-field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--modal-text);
+}
+
+.modal-field input,
+.modal-field select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--modal-border);
+  border-radius: 6px;
+  color: var(--modal-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.modal-error {
+  margin: 0.35rem 0 0;
+  min-height: 1.1em;
+  font-size: 0.8rem;
+  color: var(--modal-danger);
+}
+
+.modal-field.has-error input {
+  border-color: var(--modal-danger);
+}
+
+/* --------------------------------------------------------------------------
+   Keyboard focus — :focus-visible where supported, plain :focus elsewhere
+   -------------------------------------------------------------------------- */
+.modal a:focus,
+.modal button:focus,
+.modal input:focus,
+.modal select:focus {
+  outline: 2px solid var(--modal-accent);
+  outline-offset: 2px;
+}
+
+@supports selector(:focus-visible) {
+  .modal a:focus,
+  .modal button:focus,
+  .modal input:focus,
+  .modal select:focus { outline: none; }
+
+  .modal a:focus-visible,
+  .modal button:focus-visible,
+  .modal input:focus-visible,
+  .modal select:focus-visible {
+    outline: 2px solid var(--modal-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* Background scroll lock while a modal is open. */
+body.has-modal-open { overflow: hidden; }
+
+/* --------------------------------------------------------------------------
+   Responsive — full-width sheet on small screens
+   -------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .modal { padding: 0; align-items: flex-end; }
+
+  .modal-dialog,
+  .modal-dialog.is-sm,
+  .modal-dialog.is-lg {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 10px 10px 0 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    transform: translateY(16px);
+  }
+
+  .modal-footer { flex-direction: column-reverse; }
+  .modal-footer .btn { width: 100%; }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — show and hide instantly
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .modal-dialog {
+    transition: none;
+  }
+  .modal-dialog { transform: none; }
+}

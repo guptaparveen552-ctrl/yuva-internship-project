@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathlight Journal — Placement prep, written down</title>
+<meta name="description" content="Articles on DSA patterns, full-stack projects and interview prep for final-year CS students.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Skip link: the very first focusable element, invisible until focused -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="wrapper">
+
+  <header class="topbar">
+    <div class="logo">
+      <a href="#top">Pathlight Journal</a>
+    </div>
+
+    <!-- Semantic nav with a labelled landmark, since the page will have more than one -->
+    <nav class="navmenu" aria-label="Primary">
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav-list">
+        <span class="visually-hidden">Menu</span>
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <ul class="nav-list" id="primary-nav-list">
+        <li><a href="#top">Home</a></li>
+
+        <!-- Disclosure menu: a real button, not a hover-only div -->
+        <li class="dropdown">
+          <button class="nav-dropdown-btn" id="articles-btn" aria-expanded="false" aria-controls="articles-menu">
+            Articles
+            <span class="chevron" aria-hidden="true">▾</span>
+          </button>
+          <ul class="dropdown-content" id="articles-menu" aria-labelledby="articles-btn" hidden>
+            <li><a href="#">DSA</a></li>
+            <li><a href="#">Web Dev</a></li>
+            <li><a href="#">Interviews</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">Guides</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+
+    <!-- Search disclosure: labelled button, real form, real label -->
+    <div class="search">
+      <button id="search-toggle" aria-expanded="false" aria-controls="search-form">
+        <span aria-hidden="true">🔍</span>
+        <span class="visually-hidden">Search articles</span>
+      </button>
+      <form class="search-form" id="search-form" role="search" hidden>
+        <label for="search-input" class="visually-hidden">Search articles</label>
+        <input type="search" id="search-input" name="q" placeholder="Search articles">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+
+    <h1 class="visually-hidden">Pathlight Journal — placement prep articles</h1>
+
+    <!-- Hero uses a real <article> and correct heading order: h1 (above, page title) then h2 -->
+    <article class="hero" aria-labelledby="hero-title">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='260'%3E%3Crect width='500' height='260' fill='%23cfd8e3'/%3E%3C/svg%3E"
+           alt="">
+      <h2 id="hero-title">Ace Your Next Technical Interview</h2>
+      <p class="subtext">A step by step breakdown of how three final-year students planned their last six months before placement season, from DSA reps to mock interviews.</p>
+      <a href="#" class="btn-link">
+        Read the full story
+        <span class="visually-hidden">: Ace Your Next Technical Interview</span>
+      </a>
+    </article>
+
+    <h2 class="section-heading">Latest articles</h2>
+    <section class="cards" aria-label="Latest articles">
+
+      <article class="card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160'%3E%3Crect width='300' height='160' fill='%23d7e0ea'/%3E%3C/svg%3E"
+             alt="">
+        <h3><a class="card-link" href="#">Sliding Window, Explained With Diagrams</a></h3>
+        <p>The pattern shows up in more interview problems than any other. Here is how to recognise it fast.</p>
+      </article>
+
+      <article class="card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160'%3E%3Crect width='300' height='160' fill='%23d7e0ea'/%3E%3C/svg%3E"
+             alt="">
+        <h3><a class="card-link" href="#">Building a Full-Stack Project in a Weekend</a></h3>
+        <p>A realistic scope for a resume project you can actually finish and explain in an interview.</p>
+      </article>
+
+      <article class="card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='160'%3E%3Crect width='300' height='160' fill='%23d7e0ea'/%3E%3C/svg%3E"
+             alt="">
+        <h3><a class="card-link" href="#">What Mock Interviewers Actually Notice</a></h3>
+        <p>Notes from twenty mock interviews on the small habits that change how an answer lands.</p>
+      </article>
+
+    </section>
+
+    <aside class="sidebar" aria-label="Blog sidebar">
+
+      <div class="widget">
+        <h2>Tags</h2>
+        <ul class="tags">
+          <li><a href="#">DSA</a></li>
+          <li><a href="#">React</a></li>
+          <li><a href="#">Resume</a></li>
+          <li><a href="#">Interviews</a></li>
+          <li><a href="#">SQL</a></li>
+        </ul>
+      </div>
+
+      <div class="widget">
+        <h2>Get new posts by email</h2>
+        <form class="newsletter-form">
+          <label for="newsletter-email">Email address</label>
+          <input type="email" id="newsletter-email" name="email" required
+                 aria-describedby="newsletter-hint" placeholder="you@college.edu">
+          <p id="newsletter-hint" class="hint">We send one email a week, no spam.</p>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <footer class="footer">
+    <nav class="social" aria-label="Social media">
+      <a href="#" aria-label="Follow Pathlight Journal on Twitter"><span aria-hidden="true">🐦</span></a>
+      <a href="#" aria-label="Follow Pathlight Journal on LinkedIn"><span aria-hidden="true">💼</span></a>
+      <a href="#" aria-label="Follow Pathlight Journal on Instagram"><span aria-hidden="true">📸</span></a>
+    </nav>
+    <p class="copyright">&copy; 2026 Pathlight Journal. All rights reserved.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

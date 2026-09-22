@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-09-20",
+  "summary": {
+    "totalProblems": 34,
+    "currentStreakDays": 12,
+    "weeklyGoal": 20
+  },
+  "weeklyActivity": [
+    { "day": "Mon", "solved": 3 },
+    { "day": "Tue", "solved": 4 },
+    { "day": "Wed", "solved": 2 },
+    { "day": "Thu", "solved": 5 },
+    { "day": "Fri", "solved": 3 },
+    { "day": "Sat", "solved": 1 },
+    { "day": "Sun", "solved": 4 }
+  ],
+  "problems": [
+    { "id": 1, "title": "Two Sum", "topic": "Arrays", "difficulty": "Easy", "status": "Done", "date": "2026-09-01", "minutes": 18 },
+    { "id": 2, "title": "Best Time to Buy and Sell Stock", "topic": "Arrays", "difficulty": "Easy", "status": "Done", "date": "2026-09-01", "minutes": 22 },
+    { "id": 3, "title": "Longest Substring Without Repeating Characters", "topic": "Sliding Window", "difficulty": "Medium", "status": "Done", "date": "2026-09-02", "minutes": 35 },
+    { "id": 4, "title": "Minimum Window Substring", "topic": "Sliding Window", "difficulty": "Hard", "status": "In Progress", "date": "2026-09-20", "minutes": 40 },
+    { "id": 5, "title": "Valid Parentheses", "topic": "Stacks", "difficulty": "Easy", "status": "Done", "date": "2026-09-02", "minutes": 12 },
+    { "id": 6, "title": "Daily Temperatures", "topic": "Stacks", "difficulty": "Medium", "status": "Done", "date": "2026-09-03", "minutes": 28 },
+    { "id": 7, "title": "Merge Intervals", "topic": "Arrays", "difficulty": "Medium", "status": "Done", "date": "2026-09-03", "minutes": 30 },
+    { "id": 8, "title": "Binary Tree Level Order Traversal", "topic": "Trees", "difficulty": "Medium", "status": "Done", "date": "2026-09-04", "minutes": 33 },
+    { "id": 9, "title": "Validate Binary Search Tree", "topic": "Trees", "difficulty": "Medium", "status": "Done", "date": "2026-09-04", "minutes": 29 },
+    { "id": 10, "title": "Lowest Common Ancestor of a BST", "topic": "Trees", "difficulty": "Medium", "status": "Todo", "date": "", "minutes": 0 },
+    { "id": 11, "title": "Course Schedule", "topic": "Graphs", "difficulty": "Medium", "status": "Done", "date": "2026-09-05", "minutes": 45 },
+    { "id": 12, "title": "Number of Islands", "topic": "Graphs", "difficulty": "Medium", "status": "Done", "date": "2026-09-05", "minutes": 31 },
+    { "id": 13, "title": "Clone Graph", "topic": "Graphs", "difficulty": "Medium", "status": "Todo", "date": "", "minutes": 0 },
+    { "id": 14, "title": "Climbing Stairs", "topic": "Dynamic Programming", "difficulty": "Easy", "status": "Done", "date": "2026-09-06", "minutes": 15 },
+    { "id": 15, "title": "House Robber", "topic": "Dynamic Programming", "difficulty": "Medium", "status": "Done", "date": "2026-09-06", "minutes": 24 },
+    { "id": 16, "title": "Coin Change", "topic": "Dynamic Programming", "difficulty": "Medium", "status": "Done", "date": "2026-09-07", "minutes": 38 },
+    { "id": 17, "title": "Longest Increasing Subsequence", "topic": "Dynamic Programming", "difficulty": "Medium", "status": "In Progress", "date": "2026-09-20", "minutes": 20 },
+    { "id": 18, "title": "Edit Distance", "topic": "Dynamic Programming", "difficulty": "Hard", "status": "Todo", "date": "", "minutes": 0 },
+    { "id": 19, "title": "Kth Largest Element in an Array", "topic": "Heaps", "difficulty": "Medium", "status": "Done", "date": "2026-09-08", "minutes": 26 },
+    { "id": 20, "title": "Top K Frequent Elements", "topic": "Heaps", "difficulty": "Medium", "status": "Done", "date": "2026-09-08", "minutes": 27 },
+    { "id": 21, "title": "Merge K Sorted Lists", "topic": "Heaps", "difficulty": "Hard", "status": "Todo", "date": "", "minutes": 0 },
+    { "id": 22, "title": "Reverse Linked List", "topic": "Linked Lists", "difficulty": "Easy", "status": "Done", "date": "2026-09-09", "minutes": 14 },
+    { "id": 23, "title": "Linked List Cycle", "topic": "Linked Lists", "difficulty": "Easy", "status": "Done", "date": "2026-09-09", "minutes": 16 },
+    { "id": 24, "title": "Merge Two Sorted Lists", "topic": "Linked Lists", "difficulty": "Easy", "status": "Done", "date": "2026-09-10", "minutes": 13 },
+    { "id": 25, "title": "Add Two Numbers", "topic": "Linked Lists", "difficulty": "Medium", "status": "Done", "date": "2026-09-10", "minutes": 21 },
+    { "id": 26, "title": "Word Search", "topic": "Backtracking", "difficulty": "Medium", "status": "Done", "date": "2026-09-11", "minutes": 34 },
+    { "id": 27, "title": "Subsets", "topic": "Backtracking", "difficulty": "Medium", "status": "Done", "date": "2026-09-11", "minutes": 22 },
+    { "id": 28, "title": "N-Queens", "topic": "Backtracking", "difficulty": "Hard", "status": "Todo", "date": "", "minutes": 0 },
+    { "id": 29, "title": "Binary Search", "topic": "Binary Search", "difficulty": "Easy", "status": "Done", "date": "2026-09-12", "minutes": 10 },
+    { "id": 30, "title": "Search in Rotated Sorted Array", "topic": "Binary Search", "difficulty": "Medium", "status": "Done", "date": "2026-09-12", "minutes": 25 },
+    { "id": 31, "title": "Find Minimum in Rotated Sorted Array", "topic": "Binary Search", "difficulty": "Medium", "status": "Done", "date": "2026-09-13", "minutes": 19 },
+    { "id": 32, "title": "Sliding Window Maximum", "topic": "Sliding Window", "difficulty": "Hard", "status": "Done", "date": "2026-09-13", "minutes": 42 },
+    { "id": 33, "title": "Group Anagrams", "topic": "Arrays", "difficulty": "Medium", "status": "Done", "date": "2026-09-14", "minutes": 20 },
+    { "id": 34, "title": "Product of Array Except Self", "topic": "Arrays", "difficulty": "Medium", "status": "Done", "date": "2026-09-14", "minutes": 23 }
+  ]
+}

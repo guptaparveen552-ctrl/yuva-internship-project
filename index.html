@@ -1,201 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pathlight — Track your placement prep</title>
-  <meta name="description" content="Pathlight helps CS students plan, log, and stay consistent with DSA and full-stack interview prep.">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathlight Dashboard — DSA progress tracker</title>
+<meta name="description" content="A placement-prep dashboard tracking DSA problems solved, streaks and weekly activity.">
+
+<link rel="stylesheet" href="styles.min.b9ebe085.css">
+
+<!-- Font request kept to the weights actually used (lesson from Week 4):
+     JetBrains Mono 400/500/700 and Inter 400 only. Loaded non-blocking via
+     preload + swap so it never delays first paint. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400&display=swap">
+</noscript>
 </head>
 <body>
 
-  <!-- ============ HEADER / NAV ============ -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<div class="wrapper">
+
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="logo">
-        <span class="logo-mark">&gt;_</span>
+    <div class="header-inner">
+      <div class="brand">
+        <span class="logo-mark" aria-hidden="true">&gt;_</span>
         <span class="logo-text">pathlight</span>
-      </a>
-
-      <!-- Nav links: hidden on mobile behind the toggle button -->
-      <nav class="nav" id="primary-nav">
-        <ul class="nav-list">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#how-it-works">How it works</a></li>
-          <li><a href="#tracks">Tracks</a></li>
-          <li><a href="#footer">Contact</a></li>
-        </ul>
-        <a href="#signup" class="btn btn-primary nav-cta">Start tracking</a>
-      </nav>
-
-      <!-- Hamburger / close button toggled with JS for small screens -->
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primary-nav">
-        <span class="nav-toggle-bar">jnkj</span>
-        <span class="nav-toggle-bar">vbrgbtfgngdhnh</span>
-        <span class="nav-toggle-bar"></span>
-      </button>
+        <span class="page-tag">Dashboard</span>
+      </div>
+      <p class="last-updated">Data as of <span id="generated-date">—</span></p>
     </div>
   </header>
 
-  <main id="top">
+  <main id="main-content">
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="hero-kicker">for final-year CS students</p>
-          <h1>Placement prep, <br>without the spreadsheet.</h1>
-          <p class="hero-sub">Pathlight keeps your DSA reps, projects, and mock interviews in one streak-based log — so you always know what to solve next and how far you've come.</p>
-          <div class="hero-actions">
-            <a href="#signup" class="btn btn-primary">Start tracking — free</a>
-            <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
-          </div>
-          <p class="hero-note">No card required · works on any device</p>
-        </div>
+    <h1 class="visually-hidden">Pathlight placement-prep dashboard</h1>
 
-        <!-- Decorative code-editor style panel -->
-        <div class="hero-visual" aria-hidden="true">
-          <div class="code-window">
-            <div class="code-window-bar">
-              <span class="dot dot-red"></span>
-              <span class="dot dot-amber"></span>
-              <span class="dot dot-green"></span>
-              <span class="code-window-title">progress.log</span>
-            </div>
-            <pre class="code-window-body"><code>day 47  →  arrays & two pointers      done
-day 48  →  sliding window              done
-day 49  →  binary trees                <span class="tok-active">in progress</span>
-streak  →  <span class="tok-num">12</span> days
-target  →  DSA + system design by May
-</code></pre>
-          </div>
-        </div>
+    <!-- ============ STAT CARDS ============ -->
+    <section class="stats" aria-label="Summary statistics">
+      <div class="stat-card">
+        <p class="stat-label">Total solved</p>
+        <p class="stat-value" id="stat-total">—</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Current streak</p>
+        <p class="stat-value" id="stat-streak">—</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Solved this week</p>
+        <p class="stat-value" id="stat-week">—</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Weekly goal</p>
+        <p class="stat-value" id="stat-goal">—</p>
       </div>
     </section>
 
-    <!-- ============ FEATURE HIGHLIGHTS ============ -->
-    <section class="features" id="features">
-      <div class="container">
-        <h2 class="section-title">Everything your prep already needs, in one place</h2>
-        <p class="section-sub">Built around the three things that actually move the needle before placement season.</p>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <h3 class="feature-title"><span class="feature-tag">topics/</span>dsa-tracker</h3>
-            <p>Log every problem by pattern — arrays, graphs, DP — and see which topics still need reps before your next mock interview.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3 class="feature-title"><span class="feature-tag">topics/</span>project-log</h3>
-            <p>Keep your full-stack builds, stack choices, and deploy links in one running list you can turn into resume bullets later.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3 class="feature-title"><span class="feature-tag">topics/</span>streaks</h3>
-            <p>A simple daily streak, not a leaderboard — the goal is showing up consistently, not competing with strangers.</p>
-          </article>
-        </div>
+    <!-- ============ CHART ============ -->
+    <section class="panel chart-panel" aria-labelledby="chart-heading">
+      <h2 id="chart-heading">Weekly activity</h2>
+      <div id="chart-container">
+        <!-- Populated by script.js: an SVG bar chart with role="img" and a
+             descriptive aria-label, so the trend is announced as a whole
+             rather than left silent. The exact numbers are also available
+             in the "day-by-day" list right after it for anyone who wants
+             the precise values instead of the visual trend. -->
       </div>
+      <ul class="chart-data-list visually-hidden" id="chart-data-list">
+        <!-- Text alternative: the same numbers the chart draws, always
+             present in the DOM for screen readers and for users who have
+             JavaScript but prefer text. -->
+      </ul>
     </section>
 
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="how-it-works" id="how-it-works">
-      <div class="container how-inner">
-        <div class="how-copy">
-          <h2 class="section-title">Three steps, every day</h2>
-          <ol class="how-steps">
-            <li>
-              <h3>Pick today's focus</h3>
-              <p>Choose a DSA topic or a project task from your plan — Pathlight remembers where you left off.</p>
-            </li>
-            <li>
-              <h3>Log what you finish</h3>
-              <p>One line per problem or task. No forms, no dashboards to configure first.</p>
-            </li>
-            <li>
-              <h3>Review your week</h3>
-              <p>A quiet weekly summary shows which patterns are solid and which need another pass.</p>
-            </li>
-          </ol>
+    <!-- ============ CONTROLS ============ -->
+    <section class="panel controls-panel" aria-labelledby="controls-heading">
+      <h2 id="controls-heading" class="visually-hidden">Filter and search problems</h2>
+
+      <div class="controls">
+        <div class="control">
+          <label for="search-input">Search</label>
+          <input type="search" id="search-input" placeholder="Search by title…">
         </div>
 
-        <div class="tracks-panel" id="tracks">
-          <h3 class="tracks-heading">Prep tracks</h3>
-          <ul class="tracks-list">
-            <li><span class="tracks-name">DSA fundamentals</span><span class="tracks-meta">120 problems</span></li>
-            <li><span class="tracks-name">Full-stack build</span><span class="tracks-meta">4 projects</span></li>
-            <li><span class="tracks-name">System design basics</span><span class="tracks-meta">10 case studies</span></li>
-            <li><span class="tracks-name">Mock interviews</span><span class="tracks-meta">weekly</span></li>
-          </ul>
+        <div class="control">
+          <label for="topic-filter">Topic</label>
+          <select id="topic-filter">
+            <option value="all">All topics</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="status-filter">Status</label>
+          <select id="status-filter">
+            <option value="all">All statuses</option>
+            <option value="Done">Done</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Todo">Todo</option>
+          </select>
         </div>
       </div>
+
+      <p class="result-count" id="result-count" role="status" aria-live="polite">Loading problems…</p>
     </section>
 
-    <!-- ============ PRODUCT PREVIEW ============ -->
-    <section class="showcase" id="showcase">
-      <div class="container">
-        <h2 class="section-title">See Pathlight in action</h2>
-        <p class="section-sub">A quick look at the dashboard, tracker grid, and streak view.</p>
+    <!-- ============ DATA TABLE ============ -->
+    <section class="panel table-panel" aria-labelledby="table-heading">
+      <h2 id="table-heading" class="visually-hidden">Problem log</h2>
 
-        <div class="showcase-grid">
-          <img src="assets/preview-dashboard.png">
-          <img src="assets/preview-tracker.png">
-          <img src="assets/preview-streaks.png">
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ SIGNUP / CTA ============ -->
-    <section class="cta-band" id="signup">
-      <div class="container cta-inner">
-        <h2>Start your first streak today</h2>
-        <p>Set up your first prep track in under two minutes.</p>
-        <form class="signup-form" id="signup-form">
-          <label for="email" class="visually-hidden">Email address</label>
-          <input type="email" id="email" name="email" placeholder="you@college.edu" required>
-          <button type="submit" class="btn btn-primary">Get started</button>
-        </form>
-        <p class="form-status" id="form-status" role="status"></p>
+      <div class="table-scroll">
+        <table id="problems-table">
+          <caption class="visually-hidden">
+            DSA problem log — sortable by column, filterable by topic, status and title search
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="title">Title <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="topic">Topic <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="difficulty">Difficulty <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="status">Status <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="date">Date <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+              <th scope="col" aria-sort="none">
+                <button type="button" class="sort-btn" data-key="minutes">Minutes <span class="sort-indicator" aria-hidden="true"></span></button>
+              </th>
+            </tr>
+          </thead>
+          <tbody id="problems-tbody">
+            <tr><td colspan="6">Loading…</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
   </main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer" id="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="logo-mark">&gt;_</span>
-        <span class="logo-text">pathlight</span>
-        <p class="footer-tagline">Built by students, for the placement grind.</p>
-      </div>
-
-      <div class="footer-links">
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#tracks">Tracks</a>
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Pathlight. All rights reserved.</p>
-    </div>
+  <footer class="site-footer">
+    <p>Data is static and local to this page (<code>data.json</code>) — nothing is sent anywhere.</p>
   </footer>
 
-  <script src="script.js"></script>
+</div>
+
+<script src="script.min.cd6ac412.js" defer></script>
 </body>
 </html>
